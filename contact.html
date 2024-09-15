@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(0, 0, 0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            width: 597px;
+            height: fit-content;
+            border: 1px solid #facee8;
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: rgb(224, 33, 192);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            color: #dd5dc1;
+            margin: 10px 0 5px;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #bb47a2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #bb47a2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Contact Me</h2>
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name" name="name" required>
+
+            <label for="phoneNo">Phone no.</label>
+            <input type="number" id="phoneNo" placeholder="Enter your phone number" name="phoneNo" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" name="message" placeholder="You are free to review about anything....."
+                required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "prirajsharma004@gmail.com",
+                Password: "Sodium194&",
+                To: '2022ca54f@sigce.edu.in',
+                From: document.getElementById("email").value,
+                Subject: "There is one contact from your portfolio",
+                Body: "Name : " + document.getElementById("name").value +
+                    "<br>Phone no. : " + document.getElementById("phoneNo").value +
+                    "<br>Email : " + document.getElementById("email").value +
+                    "<br>Message : " + document.getElementById("message").value
+            }).then(
+                message => alert("Message sent successfully!!!")
+            );
+        }
+    </script>
+</body>
+
+</html>
